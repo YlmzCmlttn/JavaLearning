@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  flight-scheduling:
+    build:
+      context: ./services/flight-scheduling
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - flybetter-network
+
+  booking:
+    build:
+      context: ./services/booking
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    networks:
+      - flybetter-network
+
+networks:
+  flybetter-network:
+    driver: bridge 
